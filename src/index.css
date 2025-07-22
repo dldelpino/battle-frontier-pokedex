@@ -1,0 +1,114 @@
+/* @import url("") */
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono");
+
+* { /* se aplica a la página entera */
+  font-family: "Martian Mono", Calibri, sans-serif; 
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+#search-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#search-bar input {
+  padding: 10px;
+  border-radius: 8px;
+  width: 50%;
+  font-size: 14px;
+} 
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #957dff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+  box-shadow: 0px 2px lightgray;
+}
+
+#title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: bold;
+  background-color: inherit;
+  font-size: 22px;
+}
+
+#title img {
+  width: 50px;
+  background-color: inherit;
+}
+
+#github-icon {
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+}
+
+#github-icon img {
+  width: 30px;
+  background-color: inherit;
+  margin-right: 20px;
+}
+
+#github-icon img:hover {
+  transform: scale(1.1);
+}
+
+
+#github-icon a {
+  background-color: inherit;
+}
+
+table {
+  width: 90%;
+  table-layout: fixed;
+}
+
+table, table th, table td {
+  font-size: 12px;
+  text-align: center;
+  margin: auto;
+  border: 1px solid gray;
+  border-spacing: 0px;
+}
+
+table th, table td {
+  padding: 5px
+}
+
+th {
+  background-color: rgb(226, 226, 226);
+}
+
+tr:hover td { /* sin td no funciona */
+  background-color: rgb(226, 226, 226);
+}
+
+tr:hover td img { /* sin td no funciona */
+  background-color: rgb(226, 226, 226);
+}
+
+.active {
+  display: none;
+}
+
+tr:hover .static {
+  display: none;
+}
+
+tr:hover .active {
+  display: inline;
+}
