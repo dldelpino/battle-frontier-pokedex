@@ -11,7 +11,7 @@ const Header = () => {
             GEN 4 BATTLE FRONTIER DEX
         </div>
         <div id="github-icon">
-            <a href="https://github.com/dldelpino/bfd" target="_blank"><img src="github.png"/></a>
+            <a href="https://github.com/dldelpino/battle-frontier-pokedex" target="_blank"><img src="github.png"/></a>
         </div>
     </header>
   )
