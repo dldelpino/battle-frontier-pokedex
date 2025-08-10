@@ -8,7 +8,7 @@ const Header = () => {
         </div>
         <div id="title">
             <img src="icon.png"/>
-            GEN 4 BATTLE FRONTIER DEX
+            BATTLE FRONTIER POKÉDEX
         </div>
         <div id="github-icon">
             <a href="https://github.com/dldelpino/battle-frontier-pokedex" target="_blank"><img src="github.png"/></a>
