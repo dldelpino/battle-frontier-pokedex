@@ -5,8 +5,8 @@ const Table = ({rows, columns}) => {
   return (
     <>
         <table>
-            <col width="45"/><col width="100"/><col width="45"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="70"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="170"/><col width="85"/> {/* establecer manualmente la anchura de todas las columnas */ }
-            <thead>
+            <col width="32"/><col width="100"/><col width="32"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="80"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="180"/> {/* establecer manualmente la anchura de todas las columnas */ }
+            <thead style={{border: '1px solid gray'}}>
                 <tr>
                 {columns.map(key => {
                     if (key == "Pokémon") {
@@ -25,12 +25,12 @@ const Table = ({rows, columns}) => {
                 })}
                 </tr>
                 <tr>
-                    <th>HP</th>
-                    <th>Atk</th>
-                    <th>Def</th>
-                    <th>SpA</th>
-                    <th>SpD</th>
-                    <th>Spe</th>
+                    <th style={{fontSize: '10px'}}>HP</th>
+                    <th style={{fontSize: '10px'}}>Atk</th>
+                    <th style={{fontSize: '10px'}}>Def</th>
+                    <th style={{fontSize: '10px'}}>SpA</th>
+                    <th style={{fontSize: '10px'}}>SpD</th>
+                    <th style={{fontSize: '10px'}}>Spe</th>
                 </tr>
             </thead>
             <tbody>

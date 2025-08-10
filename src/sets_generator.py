@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+from collections import defaultdict
 
 # al ejecutar este archivo, se crea un archivo JSON que contiene todos los sets de Pokémon del Frente Batalla de la cuarta generación
 # tarda alrededor de un minuto en ejecutarse
@@ -33,33 +34,51 @@ for trainerClass in trainerClasses:
         trainer = trainers[i] # nombre de los entrenadores a los que pertenecen los Pokémon de esta tabla
         trainer = trainer.text.replace(" and ", ", ")
         trainer = trainer.split(", ") # convierte "Antonio, Juan and Pedro" en ["Antonio", "Juan", "Pedro"]
+        trainer = [trainerClass + ' ' + name for name in trainer]
         rows = table.find_all("tr", attrs = {"style": "text-align:center; background:#fff"})
         for row in rows:
             cells = row.find_all("td") # [número de Pokédex, foto, nombre, objeto, naturaleza, HP, Atk, Def, SpA, SpD, Spe]
-            moves = row.find_all("th") # [ataque 1, ataque 2, ataque 3, ataque 4]
             data = {
                 '#': cells[0].text.strip(), # strip elimina espacios al principio y al final y saltos de línea
                 'Pokémon': cells[2].text.strip(),
                 'Item': cells[3].text.strip(),
                 'Moves': [
-                    moves[0].text.strip(),
-                    moves[1].text.strip(),
-                    moves[2].text.strip(),
-                    moves[3].text.strip(),
-                ],
-                'Nature': cells[4].text.strip(),
-                'EVs': [
+                    cells[4].text.strip(),
                     cells[5].text.strip(),
                     cells[6].text.strip(),
                     cells[7].text.strip(),
-                    cells[8].text.strip(),
+                ],
+                'Nature': cells[8].text.strip(),
+                'EVs': [
                     cells[9].text.strip(),
                     cells[10].text.strip(),
+                    cells[11].text.strip(),
+                    cells[12].text.strip(),
+                    cells[13].text.strip(),
+                    cells[14].text.strip(),
                 ],
-                'Trainers': trainer,
-                'Trainer Class': trainerClass
+                'Trainers': trainer
             }
             sets.append(data)
 
+grouped = defaultdict(list) # defaultdict es una subclase de dict que facilita añadir elementos a un diccionario
+
+for s in sets:
+    key = (s["#"], s["Pokémon"], s["Item"], tuple(s["Moves"]), s["Nature"], tuple(s["EVs"]))
+    grouped[key].extend(s["Trainers"])
+
+groupedSets = []
+
+for key, trainers in grouped.items():
+    groupedSets.append({
+        "#": key[0],
+        "Pokémon": key[1],
+        "Item": key[2],
+        "Moves": list(key[3]),
+        "Nature": key[4],
+        "EVs": list(key[5]),
+        "Trainers": trainers
+    })
+
 with open("src/sets.json", "w", encoding="utf-8") as f: # "w" - write; "r" - read; "a" - append; "x" - create
-    json.dump(sets, f, indent = 2, ensure_ascii = False) # indent = 2 hace que el JSON sea más legible; ensure_ascii = False hace que los caracteres no ASCII no den problemas
+    json.dump(groupedSets, f, indent = 2, ensure_ascii = False) # indent = 2 hace que el JSON sea más legible; ensure_ascii = False hace que los caracteres no ASCII no den problemas

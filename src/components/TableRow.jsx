@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import moveType from "../moveType.json";
 
 const typeColor = {
@@ -23,63 +23,79 @@ const typeColor = {
 }
 
 const TableRow = ({row, id}) => {
+  const [isVisible, setIsVisible] = useState(false)
   return (
     <tr key={id}>
-      {Object.entries(row).map(([key, value], i) => {
-        if (key == "#") {
-          return (
-              <td key={i}>
-                <img className="static" src={"pokemon_icons/png/" + value + ".png"}/>
-                <img className="active" src={"pokemon_icons/gif/" + value + ".gif"}/>
-              </td>
-          );
-        }
-        if (key == "Item") {
-          let imgName = value.toLowerCase().replace(/\s/g, '');
-          return (
-            <>
-              <td key={i + '- img'}>
-                <img src={"item_icons/" + imgName + ".png"} />
-              </td>
-              <td key={i}>
-                {value}
-              </td>
-            </>
-          );
-        }
-        if (Array.isArray(value)) { // las columnas que son arrays ("Moves", "EVs" y "Trainers") requieren un trato especial
-          if (key === "Trainers") {
-            return (
-              <td key={i}>
-                {value.join(", ")}
-              </td>
-            );
-          } 
-          else if (key === "Moves") {
-            return (
-              <>
-                {value.map((move, idx) => {
-                  const type = moveType[move];
-                  const color = typeColor[type];
-                  return (
-                    <td key={i + '-' + idx} style={{backgroundColor: color, color: "white"}}>
-                      {move}
-                    </td>
-                  );
-                })}
-              </>
-            );
-          }
-          else { // en las columnas "Moves" y "EVs", debe crearse un <td> para cada elemento del array
-            return value.map((item, idx) => (
-              <td key={i + '-' + idx}>{item}</td>
-            ));
-          }
-        } 
-        else {
-          return <td key={i}>{value}</td>;
-        }
+      <td style={{borderRight: 'none'}}>
+        <img className="static" src={"pokemon_icons/png/" + row["#"] + ".png"}/>
+        <img className="active" src={"pokemon_icons/gif/" + row["#"] + ".gif"}/>
+      </td>
+
+      <td style={{borderLeft: 'none', textAlign: 'left'}}>
+        {row["Pokémon"]}
+      </td>
+
+      <td style={{borderRight: 'none'}}>
+        <img src={"item_icons/" + row["Item"].toLowerCase().replace(/\s/g, '') + ".png"} />
+      </td>
+
+      <td style={{borderLeft: 'none', textAlign: 'left'}}>
+        {row["Item"]}
+      </td>
+
+      {row["Moves"].map(move => {
+        const type = moveType[move]
+        const color = typeColor[type]
+        return (
+          <td>
+            <div style={{borderRadius: '10px', backgroundColor: color, color: 'white', paddingTop: '5px', paddingBottom: '5px'}}>
+              {move}
+            </div>
+          </td>
+        )
       })}
+
+      <td>
+        {row["Nature"]}
+      </td>
+
+      {row["EVs"].map(value => {
+        return (
+          <td>
+            {value}
+          </td>
+        )
+      })}
+
+      <td style={{fontSize: '10px', textAlign: 'left', verticalAlign: 'top', paddingLeft: '5px'}}>
+        <button onClick={() => setIsVisible(!isVisible)} style={{fontSize: '13px', marginTop: '8.5px', marginBottom: '8.5px',  backgroundColor: 'inherit', border: 'none', fontStyle: 'italic'}}>
+          <img style={{
+            width: '10px',
+            transform: isVisible ? 'rotate(0)' : 'rotate(-90deg)',
+            transition: 'transform 0.5s ease'
+            }} src={"arrow.png"}/>
+          {isVisible ? ' Hide' : ' Show'}
+        </button>
+        {console.log(row["Trainers"].length)}
+        <div style={{
+          height: isVisible ? `${12*row["Trainers"].length}px` : '0px',
+          opacity: isVisible ? 1 : 0,
+          transition: 'height 0.3s ease, opacity 0.8s ease',
+          backgroundColor: 'inherit'
+        }}>
+          {isVisible && (row["Trainers"].map(trainer => {
+            return (
+              <React.Fragment>
+                {trainer}
+                <br/>
+              </React.Fragment>
+            )
+          }))}
+        </div>
+      </td>
+      {/* <td>
+        {row["Trainers"].join("<br />")}
+      </td> */}
     </tr>
   )
 }

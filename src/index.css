@@ -1,8 +1,9 @@
 /* @import url("") */
 @import url("https://fonts.googleapis.com/css2?family=Martian+Mono");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 * { /* se aplica a la página entera */
-  font-family: "Martian Mono", Calibri, sans-serif; 
+  font-family: "Inter", Arial, sans-serif; 
   background-color: white;
   margin: 0px;
   padding: 0px;
@@ -24,7 +25,7 @@ html {
   padding: 10px;
   border-radius: 8px;
   width: 50%;
-  font-size: 14px;
+  font-size: 16px;
 } 
 
 header {
@@ -73,16 +74,17 @@ header {
 }
 
 table {
-  width: 90%;
   table-layout: fixed;
+  width: 1264px;
+  font-weight: 500;
 }
 
 table, table th, table td {
-  font-size: 12px;
+  font-size: 13px;
   text-align: center;
   margin: auto;
-  border: 1px solid gray;
-  border-spacing: 0px;
+  border-collapse: collapse;
+  border-spacing: 5px;
 }
 
 table th, table td {
@@ -90,15 +92,15 @@ table th, table td {
 }
 
 th {
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(225, 225, 225);
 }
 
 tr:hover td { /* sin td no funciona */
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(240, 240, 240);
 }
 
 tr:hover td img { /* sin td no funciona */
-  background-color: rgb(226, 226, 226);
+  background-color: rgb(240, 240, 240);
 }
 
 .active {
@@ -111,4 +113,12 @@ tr:hover .static {
 
 tr:hover .active {
   display: inline;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input::placeholder {
+  font-style: italic;
 }
