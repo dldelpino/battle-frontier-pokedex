@@ -4,7 +4,7 @@ const Table = ({rows, columns}) => {
   return (
     <>
         <table>
-            <col width="32"/><col width="100"/><col width="32"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="80"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="180"/>
+            <col width="40"/><col width="100"/><col width="40"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="80"/><col width="50"/><col width="50"/><col width="50"/><col width="50"/><col width="50"/><col width="50"/><col width="180"/>
             <thead style={{border: '1px solid gray'}}>
                 <tr>
                 {columns.map(key => {
