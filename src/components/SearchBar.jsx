@@ -36,7 +36,7 @@ const SearchBar = () => {
           <input
               type="text"
               spellCheck="false"
-              placeholder="Search by Pokémon, item, move, trainer, etc."
+              placeholder="Search by Pokémon, item, move, nature, trainer..."
               value={search} // hace el texto introducido en el input sea la variable de estado search
               onChange={(e) => setSearch(e.target.value)}
               // onChange={e => setSearch(e.target.value)}
