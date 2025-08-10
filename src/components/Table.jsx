@@ -1,11 +1,10 @@
-import React from 'react'
 import TableRow from './TableRow'
 
 const Table = ({rows, columns}) => {
   return (
     <>
         <table>
-            <col width="32"/><col width="100"/><col width="32"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="80"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="180"/> {/* establecer manualmente la anchura de todas las columnas */ }
+            <col width="32"/><col width="100"/><col width="32"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="120"/><col width="80"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="40"/><col width="180"/>
             <thead style={{border: '1px solid gray'}}>
                 <tr>
                 {columns.map(key => {
@@ -39,7 +38,7 @@ const Table = ({rows, columns}) => {
                 ))}
             </tbody>
         </table>
-        <div style={{margin: "50px"}}> {/* añadir algo de espacio al final de la tabla */}</div>
+        <div style={{margin: "50px"}}></div>
     </>
   )
 }

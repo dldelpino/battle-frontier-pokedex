@@ -93,9 +93,6 @@ const TableRow = ({row, id}) => {
           }))}
         </div>
       </td>
-      {/* <td>
-        {row["Trainers"].join("<br />")}
-      </td> */}
     </tr>
   )
 }

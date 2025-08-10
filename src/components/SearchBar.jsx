@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import setsData from "../sets.json"
 import Table from '../components/Table'
 
@@ -49,9 +49,6 @@ const SearchBar = () => {
         }
         columns={Object.keys(setsData[0]).slice(1)} // Object.keys(setsData[0]) devuelve ["#", "Pokémon", "Item", ...]
       />
-      {/* {search.trim().length > 1 && filteredSets.length > 0 && (
-        <Table rows={filteredSets} columns={Object.keys(setsData[0]).slice(1)} /> 
-      )} condición && (lo que ocurre si se verifica la condición) */}
     </>
   )
 }
