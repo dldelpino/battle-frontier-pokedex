@@ -78,9 +78,10 @@ const TableRow = ({row, id}) => {
         </button>
         {console.log(row["Trainers"].length)}
         <div style={{
-          height: isVisible ? `${12*row["Trainers"].length}px` : '0px',
+          height: isVisible ? 'auto' : '0px',
+          // height: isVisible ? `${12*row["Trainers"].length}px` : '0px',
           opacity: isVisible ? 1 : 0,
-          transition: 'height 0.3s ease, opacity 0.8s ease',
+          // transition: 'height 0.3s ease, opacity 0.8s ease',
           backgroundColor: 'inherit'
         }}>
           {isVisible && (row["Trainers"].map(trainer => {
