@@ -19,12 +19,13 @@ html {
   align-items: center;
   margin-top: 30px;
   margin-bottom: 30px;
+  min-width: 1340px;
 }
 
 #search-bar input {
   padding: 10px;
   border-radius: 8px;
-  width: 50%;
+  width: 30%;
   font-size: 16px;
 } 
 
@@ -36,6 +37,7 @@ header {
   padding-bottom: 10px;
   border-bottom: 1px solid black;
   box-shadow: 0px 2px lightgray;
+  min-width: 1341px;
 }
 
 #title {
